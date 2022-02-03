@@ -13,17 +13,16 @@ public class ClientePersonaService {
 
         try {
             Context jndi = new InitialContext();
-            IPersonaServiceRemote personaService = (IPersonaServiceRemote) jndi.lookup("java:global/Academia-JEE-1.0/PersonaServiceImpl!com.ceep.academia.service.IPersonaServiceRemote, java:global/Academia-JEE-1.0/PersonaServiceImpl");
+            IPersonaServiceRemote personaService = (IPersonaServiceRemote) jndi.lookup("java:global/Academia-JEE-1.0/PersonaServiceImpl!com.ceep.academia.service.IPersonaServiceRemote");
             List<Persona> personas = personaService.listarPersonas();
-            
+
             for (Persona persona : personas) {
                 System.out.println(persona);
-                
+
             }
-            
+
             System.out.println("Fin llamada al EJB desde el Cliente");
-            
-            
+
         } catch (NamingException e) {
             e.printStackTrace();
         }
